@@ -43,7 +43,7 @@ export function table() {
         {
           tableData.map((rowItem: any, row: number) => {
             return(
-              <tr key={rowItem?.id}>
+              <tr key={'row-' + rowItem?.id}>
                 <td className='px-[5px] h-full min-w-[20px] max-w-[30px] bg-slate-100 border-r border-t border-slate-300 text-[10px] font-bold text-center cursor-pointer'>
                   {(row + 1)}
                 </td>
@@ -51,11 +51,12 @@ export function table() {
                   <input type="checkbox" name="" id="" />
                 </td>
                 {
-                  rowItem?.columnData.map((item: any, index: number) => {
+                  rowItem?.columnData?.map((item: any, index: number) => {
                     return(
                       <TableData 
-                        key={item?.cellValue + index} 
-                        text={item?.cellValue}
+                        key={'row-' + rowItem?.id + '-cell-' + index} 
+                        columnKey={'row-' + rowItem?.id + '-cell-' + index} 
+                        data={{id: rowItem?.id, text: item?.cellValue}}
                         item={{
                           index: index,
                           row: row,

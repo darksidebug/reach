@@ -31,7 +31,8 @@ const tableContextDefaultValues: tableContextType = {
   handleTableItemMenuShow: () => {},
   handleRowColumnSelection: () => {},
 
-  handleColumnTypeSelection: (type: number) => {}
+  handleColumnTypeSelection: (type: number) => {},
+  handleCellValueUpdate: ({row, index, value}: {row: number, index: number, value: string}) => {}
 };
 
 

@@ -27,5 +27,6 @@ export type tableContextType = {
   handleTableItemMenuShow: VoidFunction,
   handleRowColumnSelection: Function,
 
-  handleColumnTypeSelection: Function
+  handleColumnTypeSelection: Function,
+  handleCellValueUpdate: Function
 }

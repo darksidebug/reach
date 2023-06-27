@@ -106,6 +106,24 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
     setCurrentRowSelected(row)
   }
 
+  const handleCellValueUpdate = (
+    {row, index, value}:
+    {row: number, index: number, value: string}
+  ) => {
+
+    const { columnData } = tableData[row]
+
+    const updatedColumnData = {...columnData[index], cellValue: value}
+    columnData.splice(index, 1)
+    columnData.splice(index, 0, updatedColumnData)
+    console.log(columnData)
+
+    // const updatedRowData = {...tableData[row]}
+    const updatedTableData = [...tableData];
+
+    setTableData(updatedTableData);
+  }
+
 
   const contextValue = {
     // context states
@@ -142,7 +160,8 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
     handleTableItemMenuShow,
     handleRowColumnSelection,
 
-    handleColumnTypeSelection
+    handleColumnTypeSelection,
+    handleCellValueUpdate
   }
   
   return(
