@@ -6,18 +6,9 @@ import { ColumnMenu } from "@/app/components/common/column-menu";
 
 import { useTableContext } from "@/app/context/table-context";
 
-export function tableHeading(
-  {header, item}: 
-  {
-    header: String, 
-    item: {
-      index: number,
-      hasCellIcon: Boolean,
-      hasRowMenu: Boolean,
-      hasColumnMenu: Boolean
-    }
-  }
-) {
+import { TableHeadingProps } from "@/types/table-heading";
+
+export function tableHeading({header, item}: TableHeadingProps) {
 
   const { 
     isHeaderMenuToggled,
@@ -29,6 +20,11 @@ export function tableHeading(
     handleColumnTypeSelection
   } = useTableContext()
 
+  const handleTableHeadingOnMouseHover = () => {
+    if(isRowColumnMenuToggled) return
+    handleHeaderItemSelect(item?.index)
+  }
+
   return(
     <th
       className='relative w-auto py-3 px-2 border-r border-slate-300 last:border-r-0 text-xs text-left font-semibold text-slate-700' 
@@ -37,10 +33,7 @@ export function tableHeading(
       {header}
       <div 
         className={"absolute top-0.5 right-0 px-3 py-3.5 bg-transparent"}
-        onMouseOver={() => {
-          if(isRowColumnMenuToggled) return
-          handleHeaderItemSelect(item?.index)
-        }}
+        onMouseOver={handleTableHeadingOnMouseHover}
         onMouseLeave={() => handleHeaderMouseLeave()}
       >
         {(() => {
