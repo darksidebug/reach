@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import { columnMenu } from "@/utils/static/column-menu"
 
-import { useTableContext } from '@/context/table-context'
+import { useTableContext } from '@/app/context/table-context'
 
 export function menu(
   {

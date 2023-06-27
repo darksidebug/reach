@@ -1,24 +1,24 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-import { VerticalMenu } from "@/components/common/vertical-menu";
-import { Table } from '@/components/table-template/table';
+import { VerticalMenu } from "@/app/components/common/vertical-menu";
+import { Table } from '@/app/components/table-template/table';
 import { rowData } from '@/utils/template/column-data';
 
-const TextAlignTool = dynamic(() => import('@/components/common/header-tools/text-align-tool'));
-const AddColumnTool = dynamic(() => import('@/components/common/header-tools/add-column-tool'));
-const AddRowTool = dynamic(() => import('@/components/common/header-tools/add-row-tool'));
-const SortContentTool = dynamic(() => import('@/components/common/header-tools/sort-tool'));
-const SaveTool = dynamic(() => import('@/components/common/header-tools/save-tool'));
-const ClipboardTool = dynamic(() => import('@/components/common/header-tools/clipboard-tool'));
-const UndoRedoTool = dynamic(() => import('@/components/common/header-tools/undo-redo-tool'));
-const FillColorTool = dynamic(() => import('@/components/common/header-tools/fill-color-tool'));
-const DownloadTool = dynamic(() => import('@/components/common/header-tools/download-tool'));
-const PrintTool = dynamic(() => import('@/components/common/header-tools/print-tool'));
-const CopyToTableTool = dynamic(() => import('@/components/common/header-tools/copy-to-table-tool'));
-const ImportTool = dynamic(() => import('@/components/common/header-tools/import-tool'));
+const TextAlignTool = dynamic(() => import('@/app/components/common/header-tools/text-align-tool'));
+const AddColumnTool = dynamic(() => import('@/app/components/common/header-tools/add-column-tool'));
+const AddRowTool = dynamic(() => import('@/app/components/common/header-tools/add-row-tool'));
+const SortContentTool = dynamic(() => import('@/app/components/common/header-tools/sort-tool'));
+const SaveTool = dynamic(() => import('@/app/components/common/header-tools/save-tool'));
+const ClipboardTool = dynamic(() => import('@/app/components/common/header-tools/clipboard-tool'));
+const UndoRedoTool = dynamic(() => import('@/app/components/common/header-tools/undo-redo-tool'));
+const FillColorTool = dynamic(() => import('@/app/components/common/header-tools/fill-color-tool'));
+const DownloadTool = dynamic(() => import('@/app/components/common/header-tools/download-tool'));
+const PrintTool = dynamic(() => import('@/app/components/common/header-tools/print-tool'));
+const CopyToTableTool = dynamic(() => import('@/app/components/common/header-tools/copy-to-table-tool'));
+const ImportTool = dynamic(() => import('@/app/components/common/header-tools/import-tool'));
 
-import { useTableContext } from '@/context/table-context';
+import { useTableContext } from '@/app/context/table-context';
 
 export default function testCaseTableDefault() {
 

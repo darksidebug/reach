@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { TableContext } from "@/context/table-context"
+import { TableContext } from "@/app/context/table-context"
 import { rowData } from '@/utils/template/column-data';
 
 export const TableContextProvider = ({children}: {children: React.ReactNode}) => {

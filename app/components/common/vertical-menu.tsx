@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { useTableContext } from "@/context/table-context"
+import { useTableContext } from "@/app/context/table-context"
 
 export function verticalMenu(
   {children, type}: 

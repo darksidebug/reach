@@ -1,6 +1,6 @@
 
 
-import { useTableContext } from "@/context/table-context"
+import { useTableContext } from "@/app/context/table-context"
 import { rowData } from '@/utils/template/column-data';
 
 export default function mergeCellMenus() {

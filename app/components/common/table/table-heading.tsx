@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import React from 'react'
 
-import { VerticalMenu } from "@/components/common/vertical-menu";
-import { ColumnMenu } from "@/components/common/column-menu";
+import { VerticalMenu } from "@/app/components/common/vertical-menu";
+import { ColumnMenu } from "@/app/components/common/column-menu";
 
-import { useTableContext } from "@/context/table-context";
+import { useTableContext } from "@/app/context/table-context";
 
 export function tableHeading(
   {header, item}: 

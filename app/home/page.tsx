@@ -3,9 +3,9 @@
 import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 
-import { TableContextProvider } from '@/provider/tableContextProvider'
+import { TableContextProvider } from '@/app/context/provider/tableContextProvider'
 
-const TestCaseTableDefault = dynamic(() => import('@/components/table-template/default'))
+const TestCaseTableDefault = dynamic(() => import('@/app/components/table-template/default'))
 
 export const metadata: Metadata = {
   title: 'Reach - Home',

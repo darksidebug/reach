@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { TableData } from '@/components/common/table/table-data';
-import { TableHeading } from '@/components/common/table/table-heading';
+import { TableData } from '@/app/components/common/table/table-data';
+import { TableHeading } from '@/app/components/common/table/table-heading';
 
 import { columnHeader } from "@/utils/template/column-header"
 
-import { useTableContext } from '@/context/table-context';
+import { useTableContext } from '@/app/context/table-context';
 
 export function table() {
   const { tableData } = useTableContext()

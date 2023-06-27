@@ -1,4 +1,4 @@
-import { useTableContext } from "@/context/table-context"
+import { useTableContext } from "@/app/context/table-context"
 import { columnHeader } from "@/utils/template/column-header"
 
 export default function addColumnMenus() {
