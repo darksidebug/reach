@@ -28,10 +28,6 @@ export function tableData({data, item, columnKey}: TableDataProps) {
     handleCellValueUpdate
   } = useTableContext()
 
-  const handleSetCursorPosition = (e: Event) => {
-
-  }
-
   const handleMouseDown = (e: MouseEvent<HTMLDivElement, Event>) => {
     if(isRowColumnMenuToggled) return
     setFocused(true);
