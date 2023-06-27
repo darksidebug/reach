@@ -1,10 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, MouseEvent } from 'react'
 
 import { columnMenu } from "@/utils/static/column-menu"
 
 import { useTableContext } from '@/app/context/table-context'
+
+import { ColumnMenuProps } from '@/types/column-menu'
 
 export function menu(
   {
@@ -16,17 +18,7 @@ export function menu(
     colIndex, 
     row, 
     totalRows
-  }: 
-  {
-    isColumnConvertable: Boolean,
-    hasMoveColumnMenu: Boolean,
-    hasSortMenu: Boolean
-    hasRowMenu: Boolean, 
-    hasColumnMenu: Boolean,
-    colIndex: number, 
-    row: number, 
-    totalRows: number
-  }
+  }: ColumnMenuProps
 ) {
   const [selectedItem, setSelectedItem] = useState(-1)
   const [isItemToggled, setItemToggled] = useState(false)
@@ -44,7 +36,11 @@ export function menu(
     return selectedItem === index
   }
 
-  
+  const handleDivElementMenuOnMouseDown = (e: MouseEvent<HTMLDivElement, Event>, index: number) => {
+    if(selectedItem !== index) handleItemSelection(index)
+    handleToggleItem(index)
+    e.stopPropagation()
+  }
 
   return(
     <div 
@@ -65,11 +61,7 @@ export function menu(
                 <div className='relative' key={item?.text}>
                   <div 
                     className='relative flex items-center justify-between py-[8px] cursor-pointer group'
-                    onMouseDown={(e) => {
-                      if(selectedItem !== index) handleItemSelection(index)
-                      handleToggleItem(index)
-                      e.stopPropagation()
-                    }}
+                    onMouseDown={(e) => handleDivElementMenuOnMouseDown(e, index)}
                   >
                     <span className={'block  ' + (!isSelected(index) ? 'group-hover:text-sky-500 group-hover:font-semibold' : 'text-slate-700') + (isSelected(index) && isItemToggled ? ' font-semibold' : '') }>{ item?.text }</span>
                     {
