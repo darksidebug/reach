@@ -1,7 +1,5 @@
 import { JSX, Component, useState, useEffect } from "react";
 
-import '@/react-awesome-spreadsheets/src/css/index.css'
-
 interface IStateProps{
   data                  : IDataPropeties,
   useCustomHeader?      : boolean,
