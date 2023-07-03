@@ -27,11 +27,11 @@ export function tableHeading({header, item}: TableHeadingProps) {
 
   return(
     <th
-      className='relative w-auto py-3 px-2 border-r border-slate-300 last:border-r-0 text-xs text-left font-semibold text-slate-700' 
+      className='relative p-1 min-w-[100px] w-auto border-r border-slate-300 last:border-r-0 text-xs text-center font-semibold text-slate-700' 
       onMouseOver={() => handleColumnTypeSelection(0)}
     >
       {header}
-      <div 
+      {/* <div 
         className={"absolute top-0.5 right-0 px-3 py-3.5 bg-transparent"}
         onMouseOver={handleTableHeadingOnMouseHover}
         onMouseLeave={() => handleHeaderMouseLeave()}
@@ -62,7 +62,7 @@ export function tableHeading({header, item}: TableHeadingProps) {
             )
           }
         })()}
-      </div>
+      </div> */}
     </th>
   )
 }

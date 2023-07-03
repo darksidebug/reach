@@ -4,7 +4,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -15,7 +14,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -26,7 +24,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -37,7 +34,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -48,7 +44,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -59,7 +54,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -70,7 +64,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -81,7 +74,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -92,7 +84,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -108,7 +99,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -119,7 +109,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -130,7 +119,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -141,7 +129,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -152,7 +139,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -163,7 +149,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -174,7 +159,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -185,7 +169,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -196,7 +179,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -212,7 +194,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -223,7 +204,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -234,7 +214,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -245,7 +224,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -256,7 +234,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -267,7 +244,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -278,7 +254,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -289,7 +264,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -300,7 +274,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -316,7 +289,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -327,7 +299,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -338,7 +309,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -349,7 +319,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -360,7 +329,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -371,7 +339,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -382,7 +349,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -393,7 +359,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -404,7 +369,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -420,7 +384,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -431,7 +394,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -442,7 +404,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -453,7 +414,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -464,7 +424,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -475,7 +434,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -486,7 +444,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -497,7 +454,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -508,7 +464,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -524,7 +479,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -535,7 +489,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -546,7 +499,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -557,7 +509,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -568,7 +519,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -579,7 +529,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -590,7 +539,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -601,7 +549,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -612,7 +559,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -628,7 +574,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -639,7 +584,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -650,7 +594,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -661,7 +604,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -672,7 +614,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -683,7 +624,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -694,7 +634,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -705,7 +644,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -716,7 +654,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -732,7 +669,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -743,7 +679,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -754,7 +689,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -765,7 +699,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -776,7 +709,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -787,7 +719,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -798,7 +729,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -809,7 +739,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -820,7 +749,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -836,7 +764,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -847,7 +774,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -858,7 +784,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -869,7 +794,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -880,7 +804,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -891,7 +814,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -902,7 +824,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -913,7 +834,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -924,7 +844,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -940,7 +859,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -951,7 +869,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -962,7 +879,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -973,7 +889,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -984,7 +899,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -995,7 +909,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1006,7 +919,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1017,7 +929,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1028,7 +939,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1044,7 +954,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1055,7 +964,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1066,7 +974,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1077,7 +984,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1088,7 +994,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1099,7 +1004,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1110,7 +1014,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1121,7 +1024,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1132,7 +1034,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1148,7 +1049,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1159,7 +1059,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1170,7 +1069,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1181,7 +1079,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1192,7 +1089,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1203,7 +1099,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1214,7 +1109,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1225,7 +1119,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1236,7 +1129,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1252,7 +1144,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1263,7 +1154,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1274,7 +1164,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1285,7 +1174,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1296,7 +1184,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1307,7 +1194,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1318,7 +1204,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1329,7 +1214,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1340,7 +1224,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1356,7 +1239,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1367,7 +1249,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1378,7 +1259,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1389,7 +1269,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1400,7 +1279,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1411,7 +1289,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1422,7 +1299,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1433,7 +1309,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1444,7 +1319,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1460,7 +1334,6 @@ export const rowData = [
     columnData: [
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1471,7 +1344,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1482,7 +1354,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1493,7 +1364,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1504,7 +1374,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1515,7 +1384,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1526,7 +1394,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1537,7 +1404,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,
@@ -1548,7 +1414,6 @@ export const rowData = [
       },
       {
         cellValue: '',
-        isDraggable: true,
         isResizeable: true,
         canRowSpan: false,
         canColumnSpan: true,

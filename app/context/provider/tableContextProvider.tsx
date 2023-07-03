@@ -25,6 +25,8 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
   const [columnTypeSelected, setColumnTypeSelected] = useState<number>(0)
 
   const [tableData, setTableData] = useState<any>(rowData)
+
+  const [isFocused, setFocused] = useState<boolean>(false)
   
   // column header functions
   const handleHeaderToggleMenu = () => {
@@ -72,11 +74,13 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
     setRowColumnMenuIconVisible(false)
   }
 
-  const handleRowColumnItemSelect = (index: number, row: number) => {
+  const handleRowColumnItemSelect = (i: number, row: number) => {
+    // console.log('index -', i, columnItemSelected, ', -- ', row, setTableSelected)
     if(isRowColumnMenuToggled) return
-    setColumnItemSelected(index)
+    setColumnItemSelected(i)
     setTableSelected(row)
     setRowColumnMenuIconVisible(true)
+    // console.log(i, columnItemSelected, ', -- ', row, setTableSelected)
   }
 
   const handleRowColumnItemSelectOnMouseOver = () => {
@@ -110,18 +114,18 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
     {row, index, value}:
     {row: number, index: number, value: string}
   ) => {
-
     const { columnData } = tableData[row]
 
     const updatedColumnData = {...columnData[index], cellValue: value}
     columnData.splice(index, 1)
     columnData.splice(index, 0, updatedColumnData)
-    console.log(columnData)
-
-    // const updatedRowData = {...tableData[row]}
     const updatedTableData = [...tableData];
 
     setTableData(updatedTableData);
+  }
+
+  const handleColumnFocused = (focused: boolean) => {
+    setFocused(focused)
   }
 
 
@@ -144,6 +148,7 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
 
     columnTypeSelected,
     tableData,
+    isFocused,
 
     // context functions
     // column header functions
@@ -161,7 +166,8 @@ export const TableContextProvider = ({children}: {children: React.ReactNode}) =>
     handleRowColumnSelection,
 
     handleColumnTypeSelection,
-    handleCellValueUpdate
+    handleCellValueUpdate,
+    handleColumnFocused
   }
   
   return(

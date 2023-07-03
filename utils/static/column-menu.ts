@@ -29,7 +29,7 @@ export const columnMenu = [
     iconClass: 'relative h-2.5 w-auto transition-transform'
   },
   {
-    text: 'Add column',
+    text: 'Insert column',
     append: true,
     hasSubMenu: true,
     hasIcon: true,
@@ -38,7 +38,7 @@ export const columnMenu = [
     iconClass: 'relative h-2.5 w-auto transition-transform'
   },
   {
-    text: 'Add row',
+    text: 'Insert row',
     append: true,
     hasSubMenu: true,
     hasIcon: true,
@@ -56,12 +56,12 @@ export const columnMenu = [
     iconClass: 'relative h-2.5 w-auto transition-transform'
   },
   {
-    text: 'Convert to',
+    text: 'Highlights',
     append: true,
     hasSubMenu: false,
-    hasIcon: false,
+    hasIcon: true,
     component: '',
-    icon: '',
-    iconClass: ''
+    icon: dynamic(() => import('@/app/components/common/icon/icon'), { ssr: false }),
+    iconClass: 'relative h-2.5 w-auto transition-transform'
   },
 ]

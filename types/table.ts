@@ -13,7 +13,8 @@ export type tableContextType = {
   currentRowSelected: number,
 
   columnTypeSelected: number,
-  tableData: any
+  tableData: any,
+  isFocused: boolean,
 
   handleHeaderMouseLeave: VoidFunction,
   handleRowColumnMouseLeave: VoidFunction,
@@ -28,5 +29,6 @@ export type tableContextType = {
   handleRowColumnSelection: Function,
 
   handleColumnTypeSelection: Function,
-  handleCellValueUpdate: Function
+  handleCellValueUpdate: Function,
+  handleColumnFocused: Function
 }

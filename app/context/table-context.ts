@@ -18,6 +18,7 @@ const tableContextDefaultValues: tableContextType = {
 
   columnTypeSelected: 0,
   tableData: [],
+  isFocused: false,
 
   handleHeaderMouseLeave: () => {},
   handleRowColumnMouseLeave: () => {},
@@ -32,7 +33,8 @@ const tableContextDefaultValues: tableContextType = {
   handleRowColumnSelection: () => {},
 
   handleColumnTypeSelection: (type: number) => {},
-  handleCellValueUpdate: ({row, index, value}: {row: number, index: number, value: string}) => {}
+  handleCellValueUpdate: ({row, index, value}: {row: number, index: number, value: string}) => {},
+  handleColumnFocused: (focused: boolean) => {}
 };
 
 
