@@ -10,6 +10,5 @@ export interface TableDataProps {
     hasCellIcon: Boolean,
     hasRowMenu: Boolean,
     hasColumnMenu: Boolean
-  }, 
-  columnKey: any
+  }
 }

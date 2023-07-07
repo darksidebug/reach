@@ -1,4 +1,5 @@
-import { JSX, Component, useState, useEffect } from "react";
+import { nanoid } from "@reduxjs/toolkit";
+import React, { JSX, Component, RefObject } from "react";
 
 interface IStateProps{
   data                  : IDataPropeties,
@@ -7,7 +8,8 @@ interface IStateProps{
   useColumnNumbering?   : boolean,
   enableColumnCheckbox? : boolean,
   useCustomMinRowLimit? : boolean,
-  customMinimumRowLimit?: number
+  customMinimumRowLimit?: number,
+  onContentChange       : Function
 }
 
 interface IRows{
@@ -28,9 +30,14 @@ interface IClassState{
   isSelecting          : boolean,
   isDragging           : boolean,
   rowsSelected         : IRows[],
+  currentRowSelected   : IRows[],
+  rowIndex             : number,
+  columnIndex          : number,
   isHighlighting       : boolean,
   isCopying            : boolean,
-  isMouseUp            : boolean
+  isMouseUp            : boolean,
+  isEditable           : boolean,
+  value                : any,
 }
 
 interface IDataPropeties{
@@ -50,6 +57,7 @@ interface IDataColumnsPropeties{
 }
 
 class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
+  private divElementRef: React.RefObject<HTMLDivElement> | undefined;
   constructor(props: IStateProps) {
     super(props)
     this.state = {
@@ -66,10 +74,19 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
       isSelecting          : false,
       isDragging           : false,
       rowsSelected         : [],
+      currentRowSelected   : [],
+      rowIndex             : 0,
+      columnIndex          : 0,
       isHighlighting       : false,
       isCopying            : false,
-      isMouseUp            : true
+      isMouseUp            : true,
+      isEditable           : false,
+      value                : null,
     }
+  }
+
+  componentDidMount(): void {
+    this.handleOnPressEnter()
   }
 
   getRowsAndColumsInitialState = () => {
@@ -85,57 +102,219 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
     }
   }
 
+  handleContentChange = (param: any) => {
+    console.log('====>>>', param)
+    this.props.onContentChange(param)
+  }
+
+  handleOnPressEnter = () => {
+    
+    document.addEventListener('keydown', (e) => {
+      
+      if(!this.state.isEditable){
+        const rows = this.state.rowsSelected
+        let columnIndex = this.state.columnIndex,
+            rowIndex = this.state.rowIndex
+
+        let defaultSelection: IRows[] = [{ row: -1, column: [] }]
+
+        if(e.key === 'Alt') return e.preventDefault()
+
+        if(rows?.length > 1) {
+
+          if (e.key === 'Enter') {
+            
+            rowIndex++
+            if(rows?.length === rowIndex){
+
+              rowIndex = 0
+              columnIndex++
+            }
+            
+            if(rows[rowIndex].column?.length === columnIndex){
+              columnIndex = 0
+            }
+          }
+
+          if(e.key === 'Tab') {
+
+            columnIndex++
+            if(rows[rowIndex].column?.length === columnIndex){
+              columnIndex = 0
+              rowIndex++
+            }
+
+            if(rows?.length === rowIndex){
+              rowIndex = 0
+            }
+          }
+
+          defaultSelection[0].row = rows[rowIndex]?.row
+          defaultSelection[0].column = [rows[rowIndex]?.column[columnIndex]]
+
+          this.handleSetCommonState(defaultSelection, rowIndex, columnIndex)
+
+          e.preventDefault()
+          return
+        }
+
+        if(this.state.rowsSelected?.length === 1){
+
+          const currentRow = rows[0].row
+          const currentColumn = rows[0].column
+
+          if (e.key === 'Enter') {
+            
+            if(currentColumn?.length === 1){
+
+              defaultSelection[0].row = (currentRow + 1)
+              defaultSelection[0].column = [currentColumn[0]]
+            }
+
+            if(currentColumn?.length > 1){
+
+              columnIndex++
+              this.handleColumnSelection(
+                columnIndex, currentColumn, e, 
+                defaultSelection, currentRow, rowIndex
+              )
+              e.preventDefault();
+              return
+            }
+          }
+
+          if(e.key === 'Tab') {
+            
+            if(currentColumn?.length === 1){
+
+              defaultSelection[0].row = currentRow
+              defaultSelection[0].column = [(currentColumn[0] + 1)]
+            }
+
+            if(currentColumn?.length > 1){
+
+              columnIndex++
+              this.handleColumnSelection(
+                columnIndex, currentColumn, e, 
+                defaultSelection, currentRow, rowIndex
+              )
+              return
+            }
+          }
+
+          this.handlEditableStateOnDoubleClick({isEditable: false})
+          this.handleSetRowsAndColumns({rowsSelected: defaultSelection})
+          this.handleSetCurrentRowsAndColumns({currentRowSelected: defaultSelection})
+          this.handleSetCommonState(defaultSelection, rowIndex, columnIndex)
+
+          e.preventDefault();
+          return
+        }
+
+        this.handleArrowPress(e, defaultSelection, rows)
+      }
+    });
+  }
+
+  handleColumnSelection = (
+    columnIndex: number, currentColumn: Array<number>, e: globalThis.KeyboardEvent,
+    defaultSelection: IRows[], currentRow: number, rowIndex: number
+  ) => {
+
+    columnIndex = ((currentColumn?.length) === columnIndex) ? 0 : columnIndex
+
+    defaultSelection[0].row = currentRow
+    defaultSelection[0].column = [currentColumn[columnIndex]]
+
+    this.handleSetCommonState(defaultSelection, rowIndex, columnIndex)
+
+    e.preventDefault();
+  }
+
+  handleSetCommonState = (defaultSelection: IRows[], rowIndex: number, columnIndex: number) => {
+    this.handleSetCurrentRowsAndColumns({currentRowSelected: defaultSelection})
+    this.handleIndexState({rowIndex: rowIndex, columnIndex: columnIndex})
+  }
+
+  handleArrowPress = (e: globalThis.KeyboardEvent, defaultSelection: IRows[], rows: IRows[]) => {
+    const currentRow = rows[0].row
+    const currentColumn = rows[0].column
+
+    if(e.key === 'ArrowLeft') {
+      defaultSelection[0].row = currentRow
+      defaultSelection[0].column = [(currentColumn[0] - 1)]
+    }
+
+    if(e.key === 'ArrowUp') {
+      defaultSelection[0].row = (currentRow - 1)
+      defaultSelection[0].column = [(currentColumn[0])]
+    }
+
+    if(e.key === 'ArrowRight') {
+      defaultSelection[0].row = currentRow
+      defaultSelection[0].column = [(currentColumn[0] + 1)]
+    }
+
+    if(e.key === 'ArrowDown') {
+      defaultSelection[0].row = (currentRow + 1)
+      defaultSelection[0].column = [(currentColumn[0])]
+    }
+
+    this.handleSetRowsAndColumns({rowsSelected: defaultSelection})
+    this.handleSetCurrentRowsAndColumns({currentRowSelected: defaultSelection})
+    e.preventDefault()
+    return
+  }
+
   handleMouseDown = (row: number, column: number) => {
     let columns: Array<number> = [],
         rows: IRows[] = [];
 
-    // const checkRows = this.state.rowsSelected
-
-    // if(checkRows?.length){
-    //   console.log('a')
-    //   checkRows.filter((item) => {
-    //     if(item.column.indexOf(column)){
-    //       this.handleSetRowsAndColumns({
-    //         // @ts-ignore
-    //         rowsSelected: []
-    //       })
-
-    //       columns.push(column)
-    //       rows.push({row: row, column: columns})
-    //     } else{
-    //       console.log('e')
-    //       columns.push(column)
-    //       rows.push({ row: row, column: columns })
-    //     }
-    //   })
-    // }else{
-    //   console.log('b')
-    //   columns.push(column)
-    //   rows.push({ row: row, column: columns })
-    // }
-
     columns.push(column)
-      rows.push({ row: row, column: columns })
+    rows.push({ row: row, column: columns })
 
     this.handleSetRowsAndColumns({
-      // @ts-ignore
       rowsSelected: rows
+    })
+
+    this.handleSetCurrentRowsAndColumns({
+      currentRowSelected: rows
     })
   }
 
-  handleMouseEnter = (row: number, column: number) => {
+  handleRowCheck = (row: number) => {
     const rows: IRows[] = this.state.rowsSelected
-
-    rows.filter((item) => {
-      if(item.row === row){
-        item.column.push(column)
-      } else{
-        rows.push({ row: row, column: [...item.column] })
+    let isAlreadyInserted = false
+    for(let i = 0; i < rows?.length; i++){
+      if(rows[i].row === row){
+        isAlreadyInserted = true
       }
-    })
+    }
+    return isAlreadyInserted
+  }
+
+  handleMouseHover = (row: number, column: number) => {
+    const rows: IRows[] = this.state.rowsSelected
+    let columns: Array<number> = []
+
+    if(this.handleRowCheck(row)){
+      for(let i = rows.length; i != 0; i--){
+        if(rows[(i - 1)]?.column){
+          if(rows[i]?.column?.length !== rows[(i - 1)]?.column?.length){
+            if(rows[(i - 1)]?.column.indexOf(column) === -1){
+              rows[(i - 1)].column.push(column)
+            }
+          }
+        }
+      }
+    }else{
+      columns = [...rows[(rows?.length - 1)]?.column]
+      rows.push({ row: row, column: columns })
+      console.log('df==>')
+      
+    }
 
     this.handleSetRowsAndColumns({
-      // @ts-ignore
       rowsSelected: rows
     })
   }
@@ -158,7 +337,7 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
   }
 
   isFirstItem = (row: number, column: number) => {
-    const rows: IRows[] = this.state.rowsSelected
+    const rows: IRows[] = this.state.currentRowSelected
     let isFirstItemInArray = false
 
     if(!rows?.length) return isFirstItemInArray
@@ -180,6 +359,10 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
     this.setState({...state})
   }
 
+  handleSetCurrentRowsAndColumns = (state: { currentRowSelected: IRows[]}) => {
+    this.setState({...state})
+  }
+
   handleHighlighting = (state: {isHighlighting: boolean}) => {
     this.setState({...state})
   }
@@ -192,11 +375,18 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
     this.setState({...state})
   }
 
+  handlEditableStateOnDoubleClick = (state: {isEditable: boolean}) => {
+    this.setState({...state})
+  }
+
+  handleIndexState = (state: {rowIndex: number, columnIndex: number}) => {
+    this.setState({...state})
+  }
+
   handleCopyOnMouseDown = () => {
     const rows: IRows[] = this.state.rowsSelected
 
     this.handleSetRowsAndColumns({
-      // @ts-ignore
       rowsSelected: rows
     })
   }
@@ -400,7 +590,7 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
               <td
                 key={'cell-' + key + '-' + this.getColumnKeyNumber(index)}
                 id={'cell-' + key + '-' + this.getColumnKeyNumber(index) }
-                className={'relative min-w-[80px] w-auto py-[3px] px-[2px] border border-slate-300 last:border-r-0 text-xs text-left text-slate-700 cursor-text ' + (data?.headers[index] ? data.headerStyle : '')}
+                className={'relative min-w-[80px] w-auto '+ (!data?.headers?.length ? 'py-[3px]' : '') +' px-[2px] border border-slate-300 last:border-r-0 text-xs text-left text-slate-700 cursor-text ' + (data?.headers[index] ? data.headerStyle : '')}
               >
                 { data?.headers[index] ?? '' }
               </td>
@@ -434,72 +624,77 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
   }
 
   renderColumnCells(row: number): JSX.Element {
+    const ref: RefObject<HTMLDivElement> = React.createRef();
+
+    // if(this.state.isEditable){
+    //   this.divElementRef = ref
+    // }
 
     const { 
-      header, data,
+      header, data, isEditable,
+      isHighlighting, rowsSelected
     } = this.state
+    
+    const handleCellMouseDown = (index: number) => {
+      this.handleSetRowsAndColumns({rowsSelected: []})
+      this.handleDragging({isDragging: false})
+      this.handleMouseState({isMouseUp: false})
+      this.handleSelecting({isSelecting: true})
+      this.handleMouseDown(row, index)
+      this.handleIndexState({rowIndex: 0, columnIndex: 0})
+    }
     
     const hasColumnData = () => {
       return data?.column && data?.column?.length
     }
 
-    let timer = 1000
+    // const removeNBSPInnerText = (e: Event) => {
+      
+    //   if(e.target?.innerText.includes('&nbsp;')){
+    //     e.target?.innerText.replace('&nbsp;', '')
+    //     e.target?.innerText.trimStart()
+    //     console.log(e)
+    //   }
+    // }
 
     return(
       <>
         {
           header.map((key: string, index: number) => {
             return (
-              <td
+              <td 
                 key={'cell-' + key + '-' + this.getColumnKeyNumber(index)}
                 id={'cell-' + key + '-' + this.getColumnKeyNumber(index) }
-                className={'relative z-[0] min-w-[80px] '+ (hasColumnData() ? 'py-[3px]' : 'py-[14px]') +' w-auto py-[3px] px-[2px] '+ (this.isColumnSelected(row, index) ? ' border-[1.5px] border-sky-300 bg-sky-50/60' : 'border border-slate-300') + (this.isFirstItem(row, index) ? ' border-[2.5px] border-sky-400 ' : '') +' last:border-r-0 text-xs text-left text-slate-700 cursor-default ' + (hasColumnData() ? data?.columnStyle : '') }
-
+                className={'relative z-[0] min-w-[80px] w-auto '+ (this.isColumnSelected(row, index) && !isEditable ? ' border-[1.5px] border-sky-300 bg-sky-50/60' : 'border border-slate-300') + (this.isFirstItem(row, index) ? ' border-[2.5px] border-sky-400 ' : '') +' last:border-r-0 text-xs text-left text-slate-700 cursor-default ' + (hasColumnData() ? data?.columnStyle : '') + (this.isColumnSelected(row, index) && isEditable ? ' bg-sky-100 border-2 border-sky-300/70' : '') }
+                
                 onMouseDown={() => {
-                  if(this.state.isHighlighting) return
-
-                  this.handleSetRowsAndColumns({rowsSelected: []})
-                  this.handleDragging({isDragging: false})
-                  this.handleMouseState({isMouseUp: false})
-                  this.handleSelecting({isSelecting: true})
-                  this.handleMouseDown(row, index)
+                  if(isHighlighting || isEditable) return
+                  handleCellMouseDown(index)
                 }}
                 onContextMenu={(e) => {
-                  this.handleDragging({isDragging: false})
                   e.preventDefault()
                 }}
                 onMouseMove={() => {
                   if(this.state.isSelecting){
                     this.handleDragging({isDragging: true})
+                    this.handlEditableStateOnDoubleClick({isEditable: false})
                   }
-                  // console.log(this.state.rowsSelected)
                 }}
                 onMouseOver={() => {
                   if(this.state.isMouseUp) return
-                  if(this.state.isDragging && this.state.isSelecting){
-                    this.handleMouseEnter(row, index)
+                  if(this.state.isDragging){
+                    this.handleMouseHover(row, index)
                   }
                 }}
                 onMouseUp={() => {
                   this.handleSelecting({isSelecting: false})
                   this.handleDragging({isDragging: false})
                 }}
-                onBlur={() => {
-                  this.handleSetRowsAndColumns(this.getRowsAndColumsInitialState())
-                  this.handleSelecting({isSelecting: false})
-                  this.handleDragging({isDragging: false})
-                  this.handleMouseState({isMouseUp: true})
-                }}
-                onKeyUp={(e) => {
-                  if(e.key === 'Tab'){
-                    this.handleSetRowsAndColumns(this.getRowsAndColumsInitialState())
-                    this.handleMouseDown(row + 1, index + 1)
-                  }
-                }}
               > 
                 { 
-                  this.isLastItem(row, index) && !this.state.isMouseUp
+                  this.isLastItem(row, index) && !this.state.isMouseUp && !isEditable
                   ? <div 
+                      contentEditable={false}
                       className="absolute -bottom-1 -right-1 z-[1] h-2 w-2 rounded-full border border-sky-500 bg-sky-500 hover:cursor-crosshair"
                       onMouseOver={() => {
                         this.handleHighlighting({isHighlighting: true})
@@ -508,10 +703,11 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
                         this.handleHighlighting({isHighlighting: false})
                         this.handleCopying({isCopying: false})
                       }}
-                      onMouseDown={() => {
+                      onMouseDown={(e) => {
                         this.handleSetRowsAndColumns(this.getRowsAndColumsInitialState())
                         this.handleSelecting({isSelecting: true})
                         this.handleCopyOnMouseDown()
+                        e.preventDefault()
                       }}
                       onMouseMove={() => {
                         if(this.state.isHighlighting){
@@ -525,8 +721,31 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
                     />
                   : null
                 }
-                <div>
-                  { '' }
+                <div
+                  ref={ref}
+                  key={'cell-' + key + '-' + this.getColumnKeyNumber(index) + '-editor'}
+                  contentEditable={isEditable}
+                  className={'py-[6px] px-[2px] w-full ' + (this.isColumnSelected(row, index) && isEditable ? 'bg-white border-[2px] border-sky-400 outline-none rounded-sm focus:cursor-text ' : '') + (this.isColumnSelected(row, index) ? 'py-[4px]' : '') + (!isEditable || this.isColumnSelected(row, index) ? ' select-none' : '')}
+                  suppressContentEditableWarning={true}
+                  onBlur={(e) => {
+                    console.log(this.divElementRef?.current)
+                    this.handleContentChange((e.target as HTMLDivElement).innerText.replace('&nbsp;', '').trimStart())
+                    this.handlEditableStateOnDoubleClick({isEditable: false})
+                  }}
+                  onMouseDown={() => {
+                    if(!this.isColumnSelected(row, index)){
+                      this.handlEditableStateOnDoubleClick({isEditable: false})
+                      handleCellMouseDown(index)
+                    }
+                  }}
+                  onDoubleClick={() => {
+                    this.handlEditableStateOnDoubleClick({isEditable: true})
+                  }}
+                >
+                  {(() => {
+                    if(!isEditable || !ref?.current?.innerText.trimStart()) return <>&nbsp;</>
+                    return <>{this.state.value}</>
+                  })()}
                 </div>
               </td>
             )

@@ -1,0 +1,10 @@
+{
+  "debug.console.fontSize": 11,
+  "terminal.integrated.fontSize": 11,
+  "chat.editor.fontSize": 12,
+  "editor.fontSize": 12,
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "files.autoSave": "afterDelay"
+}
