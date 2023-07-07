@@ -4,10 +4,8 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 
 import { TableContextProvider } from '@/app/context/provider/tableContextProvider'
-import ReactAwesomeSpreadSheet from '@/react-awesome-spreadsheets/src/spreadsheet'
-import ReactAwesomeSpreadSheetGrid from '@/react-awesome-spreadsheets/src/spreadsheet/table'
-import NextAwesomeSpreadsheet from '@/next-awesome-spreadsheet/src'
-import NextSpreadSheetGrid from '@/next-awesome-spreadsheet/src/spreadsheet/table'
+import ReactAwesomeSpreadsheet from '@/react-awesome-spreadsheet/src'
+import ReactSpreadSheetGrid from '@/react-awesome-spreadsheet/src/spreadsheet/table'
 
 const TestCaseTableDefault = dynamic(() => import('@/app/components/table-template/default'))
 
@@ -82,20 +80,12 @@ export default function Home() {
         <TestCaseTableDefault />
       </TableContextProvider> */}
 
-      {/* comment this if you want the old UI to display */}
-      {/* <ReactAwesomeSpreadSheet>
-        <ReactAwesomeSpreadSheetGrid 
-          {...props}
-          onContentChange={(param: any) => log(param)}
-        />
-      </ReactAwesomeSpreadSheet> */}
-      <br/>
-      <NextAwesomeSpreadsheet>
-        <NextSpreadSheetGrid 
+      <ReactAwesomeSpreadsheet>
+        <ReactSpreadSheetGrid 
           data={props.data}
           onCellContentUpdate={(param: any) => log(param)}
         />
-      </NextAwesomeSpreadsheet>
+      </ReactAwesomeSpreadsheet>
     </div>
   )
 }

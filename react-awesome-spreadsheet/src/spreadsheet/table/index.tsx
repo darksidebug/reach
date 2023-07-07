@@ -8,11 +8,11 @@ import { GridRow } from "./components/row";
 import { GridColumnHeader } from "./components/column";
 import { CellCheckbox } from "./components/cellCheckbox";
 
-import { IClassGridState, IStateGridProps, IRowsSelected } from "@/next-awesome-spreadsheet/types";
+import { IClassGridState, IStateGridProps, IRowsSelected } from "@/react-awesome-spreadsheet/types";
 import { GridBody } from "./components/body";
 import { GridCell } from "./components/cell";
 
-class NextSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
+class ReactSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
 
   constructor(props: any) {
     super(props)
@@ -540,4 +540,4 @@ class NextSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
   }
 }
 
-export default NextSpreadSheetGrid;
+export default ReactSpreadSheetGrid;

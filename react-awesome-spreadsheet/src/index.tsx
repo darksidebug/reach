@@ -2,7 +2,7 @@ import App from 'next/app'
 
 import Wrapper from './spreadsheet/wrapper'
 
-class NextAwesomeSpreadsheet extends App {
+class ReactAwesomeSpreadsheet extends App {
   constructor(props: any) {
     super(props)
     this.state = {}
@@ -17,4 +17,4 @@ class NextAwesomeSpreadsheet extends App {
   }
 }
 
-export default NextAwesomeSpreadsheet
+export default ReactAwesomeSpreadsheet
