@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 
 import { TableContextProvider } from '@/app/context/provider/tableContextProvider'
 import ReactAwesomeSpreadsheet from '@/react-awesome-spreadsheet/src'
-import ReactSpreadSheetGrid from '@/react-awesome-spreadsheet/src/spreadsheet/table'
+import ReactSpreadSheetGridView from '@/react-awesome-spreadsheet/src/view'
 
 const TestCaseTableDefault = dynamic(() => import('@/app/components/table-template/default'))
 
@@ -81,7 +81,7 @@ export default function Home() {
       </TableContextProvider> */}
 
       <ReactAwesomeSpreadsheet>
-        <ReactSpreadSheetGrid 
+        <ReactSpreadSheetGridView 
           data={props.data}
           onCellContentUpdate={(param: any) => log(param)}
         />
