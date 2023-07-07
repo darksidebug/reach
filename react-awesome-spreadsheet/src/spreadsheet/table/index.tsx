@@ -1,6 +1,6 @@
 import React, { Component, JSX, createElement } from "react";
 
-import '@/next-awesome-spreadsheet/assets/css/grid.css'
+import '@/react-awesome-spreadsheet/assets/css/grid.css'
 
 import TableGrid from "./components/grid";
 import { GridHeader } from "./components/header";
@@ -13,9 +13,10 @@ import { GridBody } from "./components/body";
 import { GridCell } from "./components/cell";
 
 class ReactSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
-
+  
   constructor(props: any) {
     super(props)
+
     this.state = {
       header             : ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
                               'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -399,10 +400,6 @@ class ReactSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
       if(data?.headers?.length){
         return row === 0 && data?.headers[column] ? data.headerStyle : null
       }
-    }
-
-    const getCellStyleSelection = (row: number, column: number) => {
-      
     }
 
     const isGridCellSelected = (row: number, column: number) => {
