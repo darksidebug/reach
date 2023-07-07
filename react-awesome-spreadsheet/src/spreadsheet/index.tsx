@@ -1,21 +1,14 @@
-import React, { Component, JSX, createElement } from "react";
+import { Component, JSX, createElement } from "react";
 
-import '@/next-awesome-spreadsheet/assets/css/grid.css'
-
-import TableGrid from "./components/grid";
-import { GridHeader } from "./components/header";
-import { GridRow } from "./components/row";
-import { GridColumnHeader } from "./components/column";
-import { CellCheckbox } from "./components/cellCheckbox";
+import '@/react-awesome-spreadsheet/assets/css/grid.css'
 
 import { IClassGridState, IStateGridProps, IRowsSelected } from "@/react-awesome-spreadsheet/types";
-import { GridBody } from "./components/body";
-import { GridCell } from "./components/cell";
 
 class ReactSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
 
   constructor(props: any) {
     super(props)
+
     this.state = {
       header             : ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
                               'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -372,171 +365,49 @@ class ReactSpreadSheetGrid extends Component<IStateGridProps, IClassGridState> {
     this.setState({...state})
   }
 
-  render(): JSX.Element {
+  handleGetCellFocusedState = (row: number, column: number) => {
+    const { currentRowSelected } = this.state
+    return currentRowSelected?.row === row && currentRowSelected?.column === column
+  }
 
-    const { 
-      header, currentRowSelected, isCellFocused,
-      isSelecting, isDragging, currentRow, currentColumn 
-    } = this.state
-    const { data } = this.props
+  isGridCellSelected = (row: number, column: number) => {
+    const rows: IRowsSelected[] = this.state.rowsSelected
+    let isSelected = false
 
-    const getCellData = (row: number, column: number) => {
-      
-      if(data?.headers?.length){
-        if(row === 0) return data?.headers[column]
-        return getRowColumnData(row, column)
-      }
+    if(!rows?.length) return isSelected
 
-      return getRowColumnData(row, column)
-    }
-
-    const getRowColumnData = (row: number, column: number) => {
-      // @ts-ignore
-      if(data?.rows[row]?.id === row) return data?.rows[row]?.columns[column]?.value
-    }
-
-    const getHeaderCellStyle = (row: number, column: number) => {
-      if(data?.headers?.length){
-        return row === 0 && data?.headers[column] ? data.headerStyle : null
-      }
-    }
-
-    const getCellStyleSelection = (row: number, column: number) => {
-      
-    }
-
-    const isGridCellSelected = (row: number, column: number) => {
-      const rows: IRowsSelected[] = this.state.rowsSelected
-      let isSelected = false
-  
-      if(!rows?.length) return isSelected
-  
-      rows.filter((item) => {
-        if(item.row === row){
-          if(item.column.indexOf(column) !== -1){
-            isSelected = true
-          }
+    rows.filter((item) => {
+      if(item.row === row){
+        if(item.column.indexOf(column) !== -1){
+          isSelected = true
         }
-      })
-  
-      return isSelected
+      }
+    })
+
+    return isSelected
+  }
+
+  handleGetHeaderCellStyle = (row: number, column: number) => {
+    const { data } = this.props
+    if(data?.headers?.length){
+      return row === 0 && data?.headers[column] ? data.headerStyle : null
+    }
+  }
+
+  handleGetRowColumnData = (row: number, column: number) => {
+    const { data } = this.props
+    // @ts-ignore
+    if(data?.rows[row]?.id === row) return data?.rows[row]?.columns[column]?.value
+  }
+
+  handleGetCellData = (row: number, column: number) => {
+    const { data } = this.props
+    if(data?.headers?.length){
+      if(row === 0) return data?.headers[column]
+      return this.handleGetRowColumnData(row, column)
     }
 
-    const getCellFocusedState = (row: number, column: number) => {
-      return currentRowSelected?.row === row && currentRowSelected?.column === column
-    }
-
-    return (
-      createElement(
-        'div', {className: 'table--wrapper'},
-        <TableGrid>
-          <GridHeader>
-            <GridRow>
-              {(() => {
-                return(
-                  createElement(
-                    'th', { key: 'th-0A' }
-                  )
-                )
-              })()}
-              <CellCheckbox 
-                wrapper={'th'} 
-                isVisible={!data?.headers?.length} 
-              />
-              {
-                header.map((item: string, index: number) => {
-                  return (
-                    <GridColumnHeader 
-                      key        = { 'th-' + item } 
-                      isSelected = { currentColumn === index } 
-                    >
-                      { item }
-                    </GridColumnHeader>
-                  )
-                })
-              }
-            </GridRow>
-          </GridHeader>
-          <GridBody>
-            {
-              header.map((item: string, row: number) => {
-                if(row < 20){
-                  return(
-                    <GridRow key={'tr-' + item + '-' + row} className="p-2">
-                      {(() => {
-                        return(
-                          createElement(
-                            'td',
-                            { className: `${currentRow === row ? 'isSelected' : ''}` },
-                            row + 1
-                          )
-                        )
-                      })()}
-                      <CellCheckbox 
-                        wrapper   = { 'td' } 
-                        isVisible = { true } 
-                      />
-                      {
-                        header.map((item: string, index: number) => {
-                          return(
-                            <GridCell 
-                              key          = { 'td-' + item + '-' + index } 
-                              id           = { `td-${row}-${item}-${index}` }
-                              className    = { getHeaderCellStyle(row, index) }
-                              cellStyle    = {{
-                                isSelected     : getCellFocusedState(row, index),
-                                isHighlighted  : isGridCellSelected(row, index),
-                                isLastCellItem : false,
-                                isSingleRow    : false
-                              }}
-                              
-                              isFocused    = { isCellFocused && row === currentRow && index === currentColumn }
-                              hasCellValue = { getCellData(row, index) }
-
-                              onSelect = {() => {
-                                this.handleRowSelect({
-                                  id     : `td-${row}-${item}-${index}`,
-                                  row    : row,
-                                  column : index
-                                })
-                                this.handleSetState({
-                                  currentRow    : row,
-                                  currentColumn : index,
-                                  rowCounter    : 0,
-                                  columnCounter : 0,
-                                  isSelecting   : true,
-                                })
-                              }}
-                              onCellFocus  = {(value: boolean) => this.handleSetState({ isCellFocused: value })}
-                              onFocusLeave = {() => {
-                                this.handleCellUpdateOnFocusLeave('td', row, index)
-                              }}
-                              onDrag = {() => {
-                                if(isSelecting){
-                                  this.handleSetState({isDragging: true})
-                                }
-                              }}
-                              onHover = {() => {
-                                if(isDragging){
-                                  this.handleMouseHover(row, index)
-                                }
-                              }}
-                              onMouseUp = {() => this.handleSetState({ isDragging: false, isSelecting: false })}
-                            >
-                              { getCellData(row, index) }
-                            </GridCell>
-                          )
-                        })
-                      }
-                    </GridRow>
-                  )
-                }
-              })
-            }
-          </GridBody>
-        </TableGrid>
-      )
-    )
+    return this.handleGetRowColumnData(row, column)
   }
 }
 
