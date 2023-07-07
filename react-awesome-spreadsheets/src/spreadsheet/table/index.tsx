@@ -86,7 +86,7 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
   }
 
   componentDidMount(): void {
-    // this.handleOnPressEnter()
+    this.handleOnPressEnter()
   }
 
   getRowsAndColumsInitialState = () => {
@@ -282,20 +282,36 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
     })
   }
 
+  handleRowCheck = (row: number) => {
+    const rows: IRows[] = this.state.rowsSelected
+    let isAlreadyInserted = false
+    for(let i = 0; i < rows?.length; i++){
+      if(rows[i].row === row){
+        isAlreadyInserted = true
+      }
+    }
+    return isAlreadyInserted
+  }
+
   handleMouseHover = (row: number, column: number) => {
     const rows: IRows[] = this.state.rowsSelected
     let columns: Array<number> = []
 
-    if (rows[rows.length - 1]?.row === row){
-      if(rows[rows.length - 1]?.column.indexOf(column) === -1){
-        rows[rows.length - 1].column.push(column)
-        if(rows[rows.length - 2]?.column){
-          rows[rows.length - 2].column.push(column)
+    if(this.handleRowCheck(row)){
+      for(let i = rows.length; i != 0; i--){
+        if(rows[(i - 1)]?.column){
+          if(rows[i]?.column?.length !== rows[(i - 1)]?.column?.length){
+            if(rows[(i - 1)]?.column.indexOf(column) === -1){
+              rows[(i - 1)].column.push(column)
+            }
+          }
         }
-      } else return
-    } else{
-      columns = [...rows[rows.length - 1]?.column]
+      }
+    }else{
+      columns = [...rows[(rows?.length - 1)]?.column]
       rows.push({ row: row, column: columns })
+      console.log('df==>')
+      
     }
 
     this.handleSetRowsAndColumns({
@@ -574,7 +590,7 @@ class ReactAwesomeSpreadSheetGrid extends Component<IStateProps, IClassState> {
               <td
                 key={'cell-' + key + '-' + this.getColumnKeyNumber(index)}
                 id={'cell-' + key + '-' + this.getColumnKeyNumber(index) }
-                className={'relative min-w-[80px] w-auto py-[3px] px-[2px] border border-slate-300 last:border-r-0 text-xs text-left text-slate-700 cursor-text ' + (data?.headers[index] ? data.headerStyle : '')}
+                className={'relative min-w-[80px] w-auto '+ (!data?.headers?.length ? 'py-[3px]' : '') +' px-[2px] border border-slate-300 last:border-r-0 text-xs text-left text-slate-700 cursor-text ' + (data?.headers[index] ? data.headerStyle : '')}
               >
                 { data?.headers[index] ?? '' }
               </td>

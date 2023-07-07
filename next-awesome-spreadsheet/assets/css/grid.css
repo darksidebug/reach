@@ -1,0 +1,140 @@
+:root{
+  --border-light : #CBD5E1;
+  --border-secondary : #b6c0cd;
+  --border-primary : #38BDF8;
+  --border-primary-light : #7DD3FC;
+  --bg-white : #ffffff;
+  --bg-blue-light : #F0F9FF;
+  --bg-secondary : #E2E8F0;
+  --bg-highlight : #CBD5E1;
+  --bg-highlight-primary: #F0F9FF;
+  --bg-light : #F1F5F9;
+  --outline-color : #9ddefc;
+  --text-dark: #334155;
+  --text-xs: 12px;
+  --semibold: 600;
+}
+
+.table--wrapper{
+  border: 1px solid var(--border-light);
+  overflow: auto;
+  min-width: 960px;
+  max-height: 680px;
+  user-select: none;
+}
+
+.table{
+  width: 100%;
+  margin-bottom: 1px;
+}
+
+.table thead{
+  background: var(--bg-light);
+}
+
+.table thead th{
+  position: relative;
+  padding: 4px;
+  min-width: 100px;
+  width: auto;
+  border-right: 1px solid var(--border-light);
+  font-size: var(--text-xs);
+  line-height: 16px;
+  text-align: center;
+  font-weight: var(--semibold);
+  color: var(--text-dark)
+}
+
+.table thead th:last-child{
+  border-right: none;
+}
+
+.table thead th.isSelected{
+  background-color: var(--bg-secondary);
+  border-right: 2px solid var(--bg-secondary);
+}
+
+.table thead th:nth-child(1){
+  background-color: var(--bg-secondary);
+  min-width: 30px;
+  max-width: 100px;
+  border-right: 1px solid var(--border-light);
+}
+
+.table thead th:nth-child(2),
+.table tbody tr td:nth-child(2){
+  padding: 5px 16px;
+  border-right: 1px solid var(--border-light);
+  max-width: 50px;
+  min-width: 50px;
+}
+
+.table tbody tr td:nth-child(1),
+.table tbody tr td:nth-child(2){
+  background-color: var(--bg-light);
+}
+
+table tbody tr{
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.table tbody tr td{
+  border-left: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-light);
+  padding: 12px 4px;
+  min-width: 80px;
+  width: auto;
+  font-size: 12px;
+  text-align: left;
+  color: var(--text-dark);
+  cursor: default;
+}
+
+.table tbody tr td:last-child{
+  border-right: none;
+}
+
+.table tbody tr td.isSelected{
+  background-color: var(--bg-secondary);
+}
+
+.table tbody tr td.isCurrent{
+  border: 2px solid var(--border-primary);
+  background-color: var(--bg-white);
+}
+
+.table tbody tr td.isHighLighted{
+  border: 1.5px solid var(--border-primary-light);
+  background-color: var(--bg-highlight-primary);
+}
+
+.table tbody tr td.isFocused{
+  padding: 4px;
+}
+
+.table tbody tr td.focusedOutline{
+  border: 2px solid var(--border-primary);
+  border-radius: 2px;
+  cursor: text;
+  outline: 2px solid var(--outline-color);
+  outline-offset: 1px;
+}
+
+.table tbody tr td:nth-child(1){
+  padding: 6px;
+  min-width: 30px;
+  max-width: 100px;
+  font-size: 10px;
+  border-left: none;
+  text-align: center;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+}
+
+.table .input-checkbox--wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

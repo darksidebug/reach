@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic'
 import { TableContextProvider } from '@/app/context/provider/tableContextProvider'
 import ReactAwesomeSpreadSheet from '@/react-awesome-spreadsheets/src/spreadsheet'
 import ReactAwesomeSpreadSheetGrid from '@/react-awesome-spreadsheets/src/spreadsheet/table'
+import NextAwesomeSpreadsheet from '@/next-awesome-spreadsheet/src'
+import NextSpreadSheetGrid from '@/next-awesome-spreadsheet/src/spreadsheet/table'
 
 const TestCaseTableDefault = dynamic(() => import('@/app/components/table-template/default'))
 
@@ -17,28 +19,55 @@ export const metadata: Metadata = {
 
 
 export default function Home() {
-  const value: any = []
-  const log = (param: any) => {
-    console.log('asdfds ===>>', param)
-    value.push({
-      column: {
-        id: 1,
-        value: param
-      }
-    })
-    console.log('asdfds', value)
-  }
+  let columns: any = [],
+        rows: any = []
+
+  
 
   const props = {
     enableColumnCheckbox: true,
     data: {
       headers: ['Test Case ID', 'Function', 'Role', 'Page URL', 'Scenario', 'Steps', 'Expectation', 'Result', 'Remarks'],
-      headerStyle: 'py-[15px] text-center font-semibold bg-slate-200/50',
-      rows: value,
+      headerStyle: {
+        paddingTop: '15px',
+        paddingBottom: '15px' ,
+        fontWeight: '600'
+      },
+      rows: rows,
     //   columnStyle: {
     //     font: ''
     //   }
     }
+  }
+
+  const log = (param: any) => {
+    columns = []
+
+    if(props?.data?.rows?.length === 0){
+      columns.push({...param?.column})
+      rows.push({
+        id: param?.rowIndex,
+        columns: [...columns]
+      })
+      console.log('asdfds', rows)
+      return
+    }
+
+    rows.filter((row: any) => {
+      if(row?.id === param?.rowIndex){
+        if(row?.columns[param?.columnIndex]){
+          row.columns[param?.columnIndex] = param?.column
+        } else{
+          row.columns.splice(param?.columnIndex, 0, {...param?.column})
+        }
+      } else{
+        rows.push({
+          id: param?.rowIndex,
+          columns: [{...param?.column}]
+        })
+      }
+    })
+    console.log('asdfds', rows)
   }
 
   return (
@@ -54,12 +83,19 @@ export default function Home() {
       </TableContextProvider> */}
 
       {/* comment this if you want the old UI to display */}
-      <ReactAwesomeSpreadSheet>
+      {/* <ReactAwesomeSpreadSheet>
         <ReactAwesomeSpreadSheetGrid 
           {...props}
           onContentChange={(param: any) => log(param)}
         />
-      </ReactAwesomeSpreadSheet>
+      </ReactAwesomeSpreadSheet> */}
+      <br/>
+      <NextAwesomeSpreadsheet>
+        <NextSpreadSheetGrid 
+          data={props.data}
+          onCellContentUpdate={(param: any) => log(param)}
+        />
+      </NextAwesomeSpreadsheet>
     </div>
   )
 }
